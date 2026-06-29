@@ -724,10 +724,21 @@ strong { color: var(--slate-900); font-weight: 700; }
 .hero-form__sub{ color:var(--slate-600); font-size:.96rem; margin:0 0 1.3rem; }
 
 /* "Just give us a phone or email" hint under the contact fields */
-.form-hint{ background:rgba(187,10,30,.06); border:1px solid rgba(187,10,30,.16); color:#000;
+.form-hint{ background:rgba(187,10,30,.06); border:1px solid rgba(187,10,30,.16); color:#222 !important;
   font-size:.88rem; line-height:1.5; border-radius:var(--r); padding:.7rem .9rem; margin:.2rem 0 1.1rem; }
-.form-hint strong{ color:#000; }
-.form-hint .ico{ color:var(--red); }
+.form-hint strong{ color:#222 !important; }
+.form-hint .ico{ color:var(--red) !important; }
+
+/* Numbered yellow badges on each quote-form field so people know the order */
+.quote-form{ counter-reset: qnum; }
+.quote-form .field{ counter-increment: qnum; }
+.quote-form .field > label{ display:flex; align-items:center; gap:.5rem; }
+.quote-form .field > label::before{
+  content: counter(qnum); flex:none;
+  display:inline-grid; place-items:center; width:1.5em; height:1.5em; border-radius:50%;
+  background:#FFD400; color:#7a1212; font-weight:900; font-size:.85em; line-height:1;
+  box-shadow:0 2px 0 #c9a900;
+}
 
 /* Huge CTA button + animated "CLICK HERE" indicator */
 .btn--huge{ padding:1.25rem 2.7rem; font-size:1.22rem; border-radius:var(--r-pill); font-weight:800; letter-spacing:.02em; }

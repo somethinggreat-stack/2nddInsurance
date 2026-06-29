@@ -202,4 +202,6 @@
     </div>
 </section>
 
+@include('partials.quote-popup')
+
 @endsection

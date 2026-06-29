@@ -724,8 +724,9 @@ strong { color: var(--slate-900); font-weight: 700; }
 .hero-form__sub{ color:var(--slate-600); font-size:.96rem; margin:0 0 1.3rem; }
 
 /* "Just give us a phone or email" hint under the contact fields */
-.form-hint{ background:rgba(187,10,30,.06); border:1px solid rgba(187,10,30,.16); color:var(--slate-700);
+.form-hint{ background:rgba(187,10,30,.06); border:1px solid rgba(187,10,30,.16); color:#000;
   font-size:.88rem; line-height:1.5; border-radius:var(--r); padding:.7rem .9rem; margin:.2rem 0 1.1rem; }
+.form-hint strong{ color:#000; }
 .form-hint .ico{ color:var(--red); }
 
 /* Huge CTA button + animated "CLICK HERE" indicator */

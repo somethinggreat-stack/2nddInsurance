@@ -6,7 +6,7 @@
         <div class="qpop__badge">⚡ FREE QUOTE — 2 MINUTES</div>
         <h3 class="qpop__title">WANT TO <span>SAVE</span><br>ON INSURANCE?</h3>
         <p class="qpop__sub">Get your <strong>FREE</strong> personalized quote from Patrick today — no obligation, no pressure!</p>
-        <a href="#quiz" class="qpop__cta" data-qpop-go>👉 GET MY FREE QUOTE</a>
+        <a href="{{ route('home') }}#quiz" class="qpop__cta" data-qpop-go>👉 GET MY FREE QUOTE</a>
         <button class="qpop__dismiss" data-qpop-close>No thanks, maybe later</button>
     </div>
 </div>
@@ -19,16 +19,16 @@
     function open()  { pop.classList.add('is-open');  pop.setAttribute('aria-hidden', 'false'); }
     function close() { pop.classList.remove('is-open'); pop.setAttribute('aria-hidden', 'true'); }
 
-    // Show shortly after landing, once per browsing session.
-    try {
-        if (!sessionStorage.getItem('qpopSeen')) { setTimeout(open, 900); sessionStorage.setItem('qpopSeen', '1'); }
-    } catch (e) { setTimeout(open, 900); }
+    // Show on every page load / refresh.
+    setTimeout(open, 700);
 
     pop.querySelectorAll('[data-qpop-close]').forEach(function (el) { el.addEventListener('click', close); });
 
     var go = pop.querySelector('[data-qpop-go]');
     if (go) go.addEventListener('click', function (e) {
-        var target = document.getElementById('quiz');
+        // Scroll to the form if it's on this page; otherwise let the link
+        // carry the visitor to the homepage form.
+        var target = document.getElementById('quiz') || document.getElementById('quoteForm');
         if (target) {
             e.preventDefault();
             close();

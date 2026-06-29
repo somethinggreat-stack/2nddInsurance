@@ -90,6 +90,7 @@
 
     @include('partials.footer')
     @include('partials.conversion')
+    @include('partials.quote-popup')
 
     <script src="{{ asset('js/app.js') }}" defer></script>
     @stack('scripts')

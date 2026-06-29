@@ -72,7 +72,7 @@ if (-not (Test-Path "database\database.sqlite")) {
 Write-Host "`n========================================================" -ForegroundColor Green
 Write-Host " Setup complete." -ForegroundColor Green
 Write-Host "========================================================`n"
-Write-Host "NEXT — choose how to serve it:`n"
+Write-Host "NEXT - choose how to serve it:`n"
 Write-Host "  QUICK PREVIEW (fastest):" -ForegroundColor Cyan
 Write-Host "    $php artisan serve --host=0.0.0.0 --port=8000"
 Write-Host "    Then open Windows Firewall TCP 8000 -> http://YOUR_VPS_IP:8000`n"

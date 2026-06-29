@@ -106,18 +106,27 @@
     var box = form.querySelector("[data-review-body]");
     if (!box) return;
     box.innerHTML = "";
-    var seenRadio = {};
+    var seen = {};
     steps.forEach(function (step) {
       if (step.hasAttribute("data-review")) return;
       var name = step.getAttribute("data-name");
       var items = [];
       Array.prototype.forEach.call(step.querySelectorAll("input,select,textarea"), function (el) {
-        if (!el.name || el.type === "submit" || el.type === "button") return;
-        if (el.type === "radio") { if (seenRadio[el.name]) return; seenRadio[el.name] = 1; }
-        var val = labelFor(el);
-        if (!val) return;
-        var lab = el.getAttribute("data-label");
-        if (!lab) { var fl = el.closest(".field"); var l = fl ? fl.querySelector("label") : null; lab = l ? l.textContent.replace("*", "").trim() : el.name; }
+        if (!el.name || el.type === "submit" || el.type === "button" || el.type === "hidden") return;
+        var val, lab;
+        if (el.type === "checkbox") {
+          if (seen[el.name]) return; seen[el.name] = 1;
+          var checked = Array.prototype.filter.call(form.querySelectorAll("input[type=checkbox]"), function (c) { return c.name === el.name && c.checked; });
+          if (!checked.length) return;
+          val = checked.map(function (c) { var t = c.parentNode.querySelector(".t"); return t ? t.textContent.trim() : c.value; }).join(", ");
+          lab = el.getAttribute("data-label") || name;
+        } else {
+          if (el.type === "radio") { if (seen[el.name]) return; seen[el.name] = 1; }
+          val = labelFor(el);
+          if (!val) return;
+          lab = el.getAttribute("data-label");
+          if (!lab) { var fl = el.closest(".field"); var l = fl ? fl.querySelector("label") : null; lab = l ? l.textContent.replace("*", "").trim() : el.name; }
+        }
         items.push({ k: lab, v: val });
       });
       if (!items.length) return;

@@ -43,11 +43,15 @@
                             <div style="white-space:pre-wrap">{{ $lead->message }}</div>
                         </div>
                     @endif
-                    @if ($lead->phone)
-                        <div style="margin-top:22px">
-                            <a href="tel:{{ $lead->phone }}" style="background:#BB0A1E;color:#fff;text-decoration:none;padding:12px 22px;border-radius:999px;font-weight:bold;display:inline-block">Call {{ $lead->name }}</a>
-                        </div>
-                    @endif
+                    <div style="margin-top:24px">
+                        @if ($lead->phone)
+                            <a href="tel:{{ $lead->phone }}" style="background:#BB0A1E;color:#fff;text-decoration:none;padding:12px 20px;border-radius:999px;font-weight:bold;display:inline-block;margin:0 6px 8px 0">Call {{ \Illuminate\Support\Str::of($lead->name)->before(' ') }}</a>
+                        @endif
+                        @if ($lead->email)
+                            <a href="mailto:{{ $lead->email }}" style="background:#024F9D;color:#fff;text-decoration:none;padding:12px 20px;border-radius:999px;font-weight:bold;display:inline-block;margin:0 6px 8px 0">Email</a>
+                        @endif
+                        <a href="{{ url('/admin/login') }}" style="background:#021F57;color:#fff;text-decoration:none;padding:12px 20px;border-radius:999px;font-weight:bold;display:inline-block;margin:0 6px 8px 0">Open Dashboard</a>
+                    </div>
                 </td></tr>
                 <tr><td style="padding:16px 28px;background:#f6f8fc;color:#97a0b8;font-size:12px">
                     Source: {{ $lead->source ?? 'website' }} · IP: {{ $lead->ip_address }}

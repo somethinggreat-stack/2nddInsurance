@@ -44,14 +44,14 @@ return [
 
     // Headline credibility stats — UPDATE to the agent's real figures.
     'stats' => [
-        ['n' => 15,   'suffix' => '+',  'label' => 'Years of Experience'],
+        ['n' => 20,   'suffix' => '+',  'label' => 'Years of Experience'],
         ['n' => 2500, 'suffix' => '+',  'label' => 'Families & Businesses Protected'],
         ['n' => 4.9,  'suffix' => '',   'label' => 'Average Client Rating'],
-        ['n' => 100,  'suffix' => '%',  'label' => 'Local Michigan Service'],
+        ['n' => 100,  'suffix' => '%',  'label' => 'Statewide Michigan Service'],
     ],
 
     'trust_points' => [
-        'Local Michigan Insurance Expert',
+        'Insuring All of Michigan',
         'Personalized Service You Can Trust',
         'Proudly Serving Michigan',
     ],
@@ -101,7 +101,7 @@ return [
 
     // Why work with me
     'reasons' => [
-        ['icon' => 'pin',     'title' => 'Local Michigan Expert',     'text' => "I'm based in Walled Lake and serve families and businesses across Michigan with hometown service."],
+        ['icon' => 'pin',     'title' => 'Statewide Michigan Coverage', 'text' => "I insure families and businesses across all of Michigan \u{2014} wherever you are in the state, I can help."],
         ['icon' => 'user',    'title' => "I'm Your Dedicated Agent",  'text' => 'You work directly with me — never a call center. Personal, responsive, and accountable.'],
         ['icon' => 'shield',  'title' => 'Trusted Farmers Coverage',  'text' => 'I bring you the strength and stability of Farmers Insurance, delivered with a personal touch.'],
         ['icon' => 'wallet',  'title' => 'Smart Bundling & Savings',  'text' => "I'll combine your auto, home, life and business policies to unlock meaningful discounts."],

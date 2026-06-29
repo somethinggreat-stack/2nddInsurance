@@ -19,3 +19,5 @@ yarn-error.log
 /.vscode
 /database/*.sqlite
 /database/*.sqlite-journal
+/public/error_log
+error_log

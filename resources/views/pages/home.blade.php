@@ -9,18 +9,24 @@
         <div class="hero__grid">
             <div class="hero__copy">
                 <div class="hero__badges">
-                    <span class="chip"><x-icon name="pin" /> Walled Lake, Michigan</span>
+                    <span class="chip"><x-icon name="pin" /> Insuring All of Michigan</span>
                     <span class="chip"><x-icon name="shield" /> Farmers Insurance Agent</span>
                     <span class="chip"><x-icon name="star" style="color:#ffd2d7" /> 4.9 ★ Rated</span>
                 </div>
                 <h1>Protecting Michigan <span class="accent">Families &amp; Businesses</span></h1>
-                <p class="hero__lead">Personalized Auto, Home, Life &amp; Business insurance from {{ $site['agent'] }} — your local Farmers agent. Better coverage, real savings, and one dedicated expert in your corner.</p>
+                <ul class="hero__list">
+                    <li><x-icon name="check" /> Home</li>
+                    <li><x-icon name="check" /> Auto</li>
+                    <li><x-icon name="check" /> Life</li>
+                    <li><x-icon name="check" /> Business</li>
+                </ul>
+                <p class="hero__lead">Insuring <strong style="color:#fff">all of Michigan</strong> — better coverage, better savings, from {{ $site['agent'] }}.</p>
                 <div class="hero__cta btn-row">
                     <a href="#quiz" class="btn btn--primary btn--lg">Get My Free Quote <x-icon name="arrow-right" /></a>
                     <a href="tel:{{ $site['phone_raw'] }}" class="btn btn--white btn--lg"><x-icon name="phone" /> {{ $site['phone'] }}</a>
                 </div>
                 <div class="hero__trust">
-                    <div class="stat"><b>15+</b><span>Years Experience</span></div>
+                    <div class="stat"><b>20+</b><span>Years Experience</span></div>
                     <div class="hero__divider"></div>
                     <div class="stat"><b>2,500+</b><span>Clients Protected</span></div>
                     <div class="hero__divider"></div>
@@ -83,13 +89,13 @@
             <div class="split__media reveal">
                 <div class="media-frame">
                     <img src="{{ asset('images/agent-medium.jpg') }}" alt="{{ $site['agent'] }}, your local Michigan insurance agent" width="800" height="688">
-                    <div class="exp-badge"><b>15+</b><span>Years Serving MI</span></div>
+                    <div class="exp-badge"><b>20+</b><span>Years Serving MI</span></div>
                 </div>
             </div>
             <div class="split__copy reveal" data-delay="1">
                 <span class="eyebrow"><x-icon name="user" /> Meet Your Agent</span>
                 <h2>Hi, I'm {{ $site['agent'] }}</h2>
-                <p class="lead" style="font-size:1.12rem">I'm a local Farmers Insurance agent based right here in {{ $site['city'] }}, Michigan. My mission is simple: protect what matters most to you with honest advice, personalized coverage, and service you can actually count on.</p>
+                <p class="lead" style="font-size:1.12rem">I'm a Farmers Insurance agent based in {{ $site['city'] }}, proudly insuring families and businesses across all of Michigan. My mission is simple: protect what matters most to you with honest advice, personalized coverage, and service you can actually count on.</p>
                 <ul class="check-list">
                     <li><x-icon name="check" /> One Dedicated Agent - No Call Centers.</li>
                     <li><x-icon name="check" /> Coverage tailored to Michigan families &amp; businesses</li>
@@ -142,7 +148,7 @@
         <div class="section-head center reveal">
             <span class="eyebrow"><x-icon name="sparkles" /> The Difference</span>
             <h2>Before Patrick <span style="color:#ff9aa6">vs.</span> After Patrick</h2>
-            <p>See exactly what changes the moment you switch to a dedicated local agent.</p>
+            <p>See exactly what changes the moment you switch to a dedicated agent who has your back.</p>
         </div>
 
         <div class="vs-grid reveal">

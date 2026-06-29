@@ -276,7 +276,10 @@ strong { color: var(--slate-900); font-weight: 700; }
 .chip .ico{ width:1em;height:1em;color:#ff9aa6; }
 .hero h1 { color:#fff; line-height:1.22; }
 .hero h1 .accent { background: linear-gradient(120deg,#ff7a88,#ffd0d5); -webkit-background-clip:text; background-clip:text; color:transparent; }
-.hero__lead { color:#c2d0ee; font-size:1.2rem; margin-top:1.2rem; max-width:34ch; }
+.hero__lead { color:#c2d0ee; font-size:1.12rem; margin-top:1rem; max-width:42ch; text-transform:uppercase; letter-spacing:.03em; font-weight:600; }
+.hero__list { display:grid; grid-template-columns:repeat(2,max-content); gap:.6rem 2rem; margin-top:1.4rem; }
+.hero__list li { display:flex; align-items:center; gap:.6rem; font-family:var(--font-display); font-weight:700; font-size:1.15rem; letter-spacing:.04em; text-transform:uppercase; color:#eaf1ff; }
+.hero__list .ico { width:1.25em; height:1.25em; color:#7ef0a8; background:rgba(126,240,168,.12); border-radius:50%; padding:4px; flex:none; }
 .hero__cta { margin-top:2rem; }
 .hero__trust { margin-top:2.2rem; display:flex; gap:1.6rem; flex-wrap:wrap; align-items:center; }
 .hero__trust .stat { display:flex; flex-direction:column; }
@@ -405,6 +408,40 @@ strong { color: var(--slate-900); font-weight: 700; }
 .acc[open] summary .pm{ transform:rotate(45deg); background:var(--red); color:#fff; }
 .acc__body{ padding:0 1.3rem 1.25rem; color:var(--slate-600); }
 
+/* compact checkbox chips (quote-type selector) */
+.chk-grid{ display:flex; flex-wrap:wrap; gap:.55rem; }
+.chk{ position:relative; }
+.chk input{ position:absolute; opacity:0; width:0; height:0; }
+.chk span{ display:inline-flex; align-items:center; gap:.4rem; padding:.55rem 1rem; border:1.5px solid var(--slate-200); border-radius:var(--r-pill); font-family:var(--font-display); font-weight:600; font-size:.9rem; color:var(--slate-600); cursor:pointer; transition:all var(--t); user-select:none; }
+.chk span::before{ content:""; width:14px; height:14px; border-radius:50%; border:2px solid var(--slate-300); flex:none; transition:all var(--t); }
+.chk input:checked + span{ border-color:var(--red); background:rgba(187,10,30,.06); color:var(--red); }
+.chk input:checked + span::before{ border-color:var(--red); background:var(--red); box-shadow:inset 0 0 0 2px #fff; }
+.chk input:focus-visible + span{ outline:3px solid var(--blue-400); outline-offset:2px; }
+/* Compact quote form — smaller inputs & tighter spacing */
+.quote-form .field{ margin-bottom:.7rem; gap:.25rem; }
+.quote-form .field label{ font-size:.74rem; }
+.quote-form input, .quote-form select, .quote-form textarea{ padding:.55rem .8rem; border-radius:10px; font-size:.95rem; }
+.quote-form textarea{ min-height:64px; }
+.quote-form .form-grid-2{ gap:0 .8rem; }
+.quote-form > .btn{ margin-top:.4rem; }
+
+/* Quote-type chips (questionnaire) — 2-col grid, bundles span full width */
+.quote-chips{ display:grid; grid-template-columns:1fr 1fr; gap:.5rem; }
+.qchip{ position:relative; display:block; }
+.qchip--wide{ grid-column:1 / -1; }
+.qchip input{ position:absolute; opacity:0; width:0; height:0; }
+.qchip span{
+  display:flex; align-items:center; justify-content:center; gap:.5rem; text-align:center;
+  padding:.55rem .8rem; min-height:40px; border:1.5px solid var(--slate-200); border-radius:var(--r-pill);
+  font-family:var(--font-display); font-weight:600; font-size:.88rem; color:var(--navy);
+  background:#fff; cursor:pointer; transition:all var(--t) var(--ease);
+}
+.qchip span::before{ content:""; width:14px; height:14px; border-radius:50%; border:2px solid var(--slate-300); flex:none; transition:all var(--t); }
+.qchip span:hover{ border-color:var(--blue-400); }
+.qchip input:checked + span{ border-color:var(--red); color:var(--red); background:rgba(187,10,30,.05); box-shadow:0 6px 16px -8px rgba(187,10,30,.45); }
+.qchip input:checked + span::before{ border-color:var(--red); background:var(--red); box-shadow:inset 0 0 0 2.5px #fff; }
+.qchip input:focus-visible + span{ outline:3px solid var(--blue-400); outline-offset:2px; }
+
 /* ---------- 14. CTA band ---------- */
 .cta-band{ position:relative; overflow:hidden; border-radius:var(--r-xl); background:var(--grad-red); color:#fff; padding:clamp(2.2rem,5vw,3.6rem); box-shadow:var(--sh-lg); isolation:isolate; }
 .cta-band::before{ content:""; position:absolute; inset:0; z-index:-1; background:radial-gradient(circle at 80% -20%, rgba(255,255,255,.25), transparent 50%); }
@@ -414,7 +451,7 @@ strong { color: var(--slate-900); font-weight: 700; }
 
 /* ---------- 15. Forms ---------- */
 .field{ display:flex; flex-direction:column; gap:.4rem; margin-bottom:1.1rem; }
-.field label{ font-family:var(--font-display); font-weight:600; font-size:.92rem; color:var(--slate-700); }
+.field label{ font-family:var(--font-display); font-weight:700; font-size:.82rem; letter-spacing:.045em; text-transform:uppercase; color:var(--slate-700); }
 .field .req{ color:var(--red); }
 .field input,.field select,.field textarea{
   width:100%; padding:.85rem 1rem; border-radius:12px; border:1.5px solid var(--slate-200); background:#fff;
@@ -636,6 +673,7 @@ strong { color: var(--slate-900); font-weight: 700; }
   .hero__badges .chip{ font-size:.78rem; }
   .hero h1{ font-size:clamp(2rem, 8vw, 2.7rem); overflow-wrap:break-word; }
   .hero__lead{ margin-inline:auto; font-size:1.12rem; max-width:38ch; overflow-wrap:break-word; }
+  .hero__list{ justify-content:center; display:inline-grid; }
   .hero__cta.btn-row{ justify-content:center; }
   .hero__trust{ justify-content:center; gap:1rem; }
   .hero__trust .stat b{ font-size:1.45rem; }
@@ -658,4 +696,15 @@ strong { color: var(--slate-900); font-weight: 700; }
   /* CTA band stacks centered */
   .cta-band__grid{ justify-content:center; text-align:center; }
   .cta-band .btn-row{ justify-content:center; }
+
+  /* Compact questionnaire / quote choice tiles on mobile */
+  .form-card{ padding:1.1rem; }
+  .choice-grid{ gap:.55rem; grid-template-columns:1fr 1fr; }
+  .choice__box{ padding:.8rem .5rem; gap:.4rem; border-radius:12px; }
+  .choice__box .ico{ width:22px; height:22px; }
+  .choice__box .t{ font-size:.86rem; line-height:1.2; }
+  .choice__box .d{ font-size:.74rem; }
+  .choice__check{ width:18px; height:18px; top:.45rem; right:.45rem; }
+  .quiz-step__head h2{ font-size:1.4rem; }
+  .quiz-step__head p{ font-size:.95rem; }
 }

@@ -1,0 +1,27 @@
+# ============================================================
+#  Root .htaccess (for cPanel when the whole Laravel app is
+#  uploaded into the web root, e.g. public_html).
+#  It routes all traffic into /public and blocks app files.
+#  NOTE: The ideal setup is to point the domain's Document Root
+#  to the /public folder. This file is the safe fallback.
+# ============================================================
+
+Options -Indexes
+
+# Block direct access to sensitive files & folders
+RedirectMatch 403 ^/?\.env
+RedirectMatch 403 ^/?(\.git|storage|bootstrap|app|config|database|routes|resources|tests|vendor|deploy)(/|$)
+RedirectMatch 403 ^/?(composer\.(json|lock)|package\.json|artisan|phpunit\.xml|\.env\.example|README\.md)
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Force HTTPS (comment out if SSL not active yet)
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Send everything into the public/ folder
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>

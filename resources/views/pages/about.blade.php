@@ -5,7 +5,7 @@
 
 @section('content')
 
-@include('partials.page-hero', ['heading' => 'Meet ' . $site['agent'], 'sub' => 'Your local Farmers Insurance agent, proudly protecting Michigan families and businesses.', 'crumb' => 'About'])
+@include('partials.page-hero', ['heading' => 'Meet ' . $site['agent'], 'sub' => 'A Farmers Insurance agent proudly insuring families and businesses across all of Michigan.', 'crumb' => 'About'])
 
 <section class="section">
     <div class="container">

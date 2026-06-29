@@ -14,11 +14,11 @@
 </section>
 
 <section class="section">
-    <div class="container">
-        @if ($errors->any())
-            <div class="quiz" style="margin-bottom:1.4rem">@include('partials.alerts')</div>
-        @endif
-        @include('partials.questionnaire-form')
+    <div class="container container-narrow">
+        <div class="form-card">
+            @include('partials.alerts')
+            @include('partials.questionnaire-form')
+        </div>
     </div>
 </section>
 

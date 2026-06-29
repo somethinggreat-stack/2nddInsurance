@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
     <title>@yield('title', 'Admin') — {{ config('site.brand') }}</title>
-    <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
+    <link rel="icon" href="{{ asset('images/personallogo.png') }}" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
@@ -38,9 +38,9 @@
 <body>
     <div class="admin-top">
         <div class="container">
-            <a href="{{ route('admin.leads') }}" class="brand">
-                <img src="{{ asset('images/logo.png') }}" alt="logo" style="height:34px;width:auto;filter:brightness(0) invert(1)">
-                <span class="brand__name" style="font-family:var(--font-display);font-weight:800">Lead Dashboard</span>
+            <a href="{{ route('admin.leads') }}" class="brand" style="gap:.9rem">
+                <img src="{{ asset('images/personallogo-white.png') }}" alt="{{ config('site.agent') }}" style="height:34px;width:auto">
+                <span class="brand__name" style="font-family:var(--font-display);font-weight:800;color:#fff;border-left:1px solid rgba(255,255,255,.25);padding-left:.9rem">Lead Dashboard</span>
             </a>
             <form action="{{ route('admin.logout') }}" method="POST">@csrf
                 <button class="btn btn--ghost btn--sm" style="color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.25)"><x-icon name="logout" /> Sign Out</button>

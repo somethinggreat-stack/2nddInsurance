@@ -9,18 +9,22 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body style="background:var(--grad-navy-deep);min-height:100vh;display:grid;place-items:center;padding:1.2rem">
-    <div class="form-card" style="max-width:400px;width:100%">
-        <div style="text-align:center;margin-bottom:1.4rem">
-            <img src="{{ asset('images/logo.png') }}" alt="logo" style="height:46px;width:auto;margin-bottom:.8rem">
-            <h1 style="font-size:1.5rem">Lead Dashboard</h1>
-            <p style="font-size:.9rem">Enter your password to continue.</p>
+    <div class="form-card" style="max-width:410px;width:100%">
+        <div style="text-align:center;margin-bottom:1.5rem">
+            <img src="{{ asset('images/personallogo.png') }}" alt="{{ config('site.agent') }}" style="height:60px;width:auto;margin:0 auto 1rem">
+            <h1 style="font-size:1.4rem">Lead Dashboard</h1>
+            <p style="font-size:.9rem">Please sign in to continue.</p>
         </div>
         @if ($errors->any())<div class="alert alert--err"><x-icon name="x" /> <span>{{ $errors->first() }}</span></div>@endif
         <form action="{{ route('admin.login.post') }}" method="POST">
             @csrf
             <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="{{ old('email') }}" autofocus required>
+            </div>
+            <div class="field">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" autofocus required>
+                <input type="password" id="password" name="password" required>
             </div>
             <button type="submit" class="btn btn--primary btn--block btn--lg"><x-icon name="lock" /> Sign In</button>
         </form>

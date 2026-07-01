@@ -19,7 +19,7 @@ class LeadConfirmation extends Mailable
     {
         // Replies from the lead go straight to Patrick's inbox.
         return $this->subject('Thanks for reaching out — Patrick Yasso Insurance')
-            ->replyTo(env('LEAD_NOTIFY_EMAIL', config('site.email')), 'Patrick Yasso')
+            ->replyTo(config('site.notify_email', config('site.email')), 'Patrick Yasso')
             ->view('emails.confirmation');
     }
 }

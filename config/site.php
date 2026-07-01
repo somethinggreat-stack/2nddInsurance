@@ -22,7 +22,10 @@ return [
 
     'phone'         => env('AGENT_PHONE', '(248) 504-8848'),
     'phone_raw'     => '+12485048848',
-    'email'         => env('AGENT_EMAIL', 'Pyasso@FarmersAgent.com'),
+    'email'         => env('AGENT_EMAIL', 'PYasso@FarmersAgent.com'),
+    // Where "new lead" admin notifications are sent (hardcoded so a git pull
+    // deploys it — no server .env edit needed).
+    'notify_email'  => 'PYasso@FarmersAgent.com',
     'address'       => '305 N. Pontiac Trail, Suite E',
     'city'          => 'Walled Lake',
     'state'         => 'MI',

@@ -103,7 +103,7 @@ Route::get('/mail-test', function () {
         abort(404);
     }
 
-    $to = env('LEAD_NOTIFY_EMAIL');
+    $to = config('site.notify_email', config('site.email'));
     $out = [];
 
     // Build a realistic in-memory Lead exactly like the questionnaire creates.

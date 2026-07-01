@@ -23,7 +23,7 @@ class LeadService
         $lead = Lead::create($attributes);
 
         // 1) Notify the agent of the new lead.
-        $to = env('LEAD_NOTIFY_EMAIL', config('site.email'));
+        $to = config('site.notify_email', config('site.email'));
         try {
             Mail::to($to)->send(new LeadReceived($lead));
             $this->logMail("OK    notification -> {$to}  (lead #{$lead->id} {$lead->name})");

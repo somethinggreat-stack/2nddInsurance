@@ -28,8 +28,6 @@
                 <div class="hero__trust">
                     <div class="stat"><b>20+</b><span>Years Experience</span></div>
                     <div class="hero__divider"></div>
-                    <div class="stat"><b>2,500+</b><span>Clients Protected</span></div>
-                    <div class="hero__divider"></div>
                     <div class="stat"><b>A++</b><span>Carrier Strength</span></div>
                 </div>
             </div>

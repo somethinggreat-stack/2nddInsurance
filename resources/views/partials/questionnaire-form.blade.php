@@ -17,7 +17,7 @@
             ['label' => 'Business',             'wide' => false],
         ];
     @endphp
-    <div class="field">
+    <div class="field field--highlight">
         <label>What do you need a quote for?</label>
         <div class="quote-chips">
             @foreach ($quoteChips as $c)

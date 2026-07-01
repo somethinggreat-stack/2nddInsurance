@@ -729,6 +729,12 @@ strong { color: var(--slate-900); font-weight: 700; }
 .form-hint strong{ color:#222 !important; }
 .form-hint .ico{ color:var(--red) !important; }
 
+/* Light-blue highlight box to make the "what do you need a quote for" pop */
+.quote-form .field--highlight{
+  background:#e8f2ff; border:1px solid #bcd8fb; border-radius:14px;
+  padding:1rem 1rem .85rem; margin-bottom:1.1rem; box-shadow:0 2px 10px rgba(2,79,157,.08);
+}
+
 /* Numbered yellow badges on each quote-form field so people know the order */
 .quote-form{ counter-reset: qnum; }
 .quote-form .field{ counter-increment: qnum; }

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @php $site = config('site'); @endphp
 @section('title', 'Schedule a Consultation')
-@section('description', 'Book a free, no-pressure insurance consultation with Patrick Yasso, your local Michigan Farmers Insurance agent.')
+@section('description', 'Book a free, no-pressure insurance consultation with Quote Shark Michigan, sponsored by Farmers Insurance, serving all of Michigan.')
 
 @section('content')
 
@@ -39,7 +39,7 @@
                     <input type="email" id="email" name="email" value="{{ old('email') }}">
                     @error('email')<span class="err">{{ $message }}</span>@enderror
                 </div>
-                <p class="form-hint"><x-icon name="phone" style="width:.95em;height:.95em;display:inline" /> Just add a <strong>phone or email</strong> so Patrick can reach you — everything else is optional.</p>
+                <p class="form-hint"><x-icon name="phone" style="width:.95em;height:.95em;display:inline" /> Just add a <strong>phone or email</strong> so we can reach you — everything else is optional.</p>
                 <div class="form-grid-2">
                     <div class="field">
                         <label for="date">Preferred Date</label>

@@ -11,7 +11,7 @@ class LeadReceived extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public function __construct(public Lead $lead)
+    public function __construct(public Lead $lead, public array $attachments = [])
     {
     }
 
@@ -25,6 +25,13 @@ class LeadReceived extends Mailable
         // Let Patrick reply straight to the customer.
         if (!empty($this->lead->email)) {
             $mail->replyTo($this->lead->email, $this->lead->name);
+        }
+
+        // Attach any uploaded declaration pages.
+        foreach ($this->attachments as $file) {
+            if (!empty($file['path']) && is_file($file['path'])) {
+                $mail->attach($file['path'], ['as' => $file['name'] ?? null]);
+            }
         }
 
         return $mail;

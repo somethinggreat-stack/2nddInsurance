@@ -1,15 +1,15 @@
 @php $site = config('site'); @endphp
 <header class="site-header">
     <div class="container navbar">
-        <a href="{{ route('home') }}" class="brand" aria-label="{{ $site['agent'] }} — Insurance Agent home">
-            <img src="{{ asset('images/personallogo.png') }}" alt="{{ $site['agent'] }} — Insurance Agent" class="brand__logo" width="190" height="53">
+        <a href="{{ route('home') }}" class="brand" aria-label="{{ $site['brand'] }} home">
+            <img src="{{ asset('images/personallogo.png') }}?v={{ @filemtime(public_path('images/personallogo.png')) ?: '1' }}" alt="{{ $site['brand'] }}" class="brand__logo" width="210" height="54">
         </a>
 
         <nav class="nav-links" aria-label="Primary">
             <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
             <a href="{{ route('about') }}" class="{{ request()->routeIs('about') ? 'active' : '' }}">About</a>
             <a href="{{ route('products') }}" class="{{ request()->routeIs('products') || request()->routeIs('services') ? 'active' : '' }}">Insurance</a>
-            <a href="{{ route('why-us') }}" class="{{ request()->routeIs('why-us') ? 'active' : '' }}">Why Me</a>
+            <a href="{{ route('why-us') }}" class="{{ request()->routeIs('why-us') ? 'active' : '' }}">Why Us</a>
             <a href="{{ route('testimonials') }}" class="{{ request()->routeIs('testimonials') ? 'active' : '' }}">Reviews</a>
             <a href="{{ route('faq') }}" class="{{ request()->routeIs('faq') ? 'active' : '' }}">FAQ</a>
             <a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a>
@@ -30,14 +30,14 @@
     <div class="mobile-nav__scrim" data-close-nav></div>
     <div class="mobile-nav__panel">
         <div class="mobile-nav__head">
-            <img src="{{ asset('images/personallogo.png') }}" alt="{{ $site['agent'] }} — Insurance Agent" style="height:42px;width:auto">
+            <img src="{{ asset('images/personallogo.png') }}?v={{ @filemtime(public_path('images/personallogo.png')) ?: '1' }}" alt="{{ $site['brand'] }}" style="height:44px;width:auto">
             <button class="mobile-nav__close" data-close-nav aria-label="Close menu"><x-icon name="x" /></button>
         </div>
         <a href="{{ route('home') }}" data-close-nav>Home</a>
-        <a href="{{ route('about') }}" data-close-nav>About Patrick</a>
+        <a href="{{ route('about') }}" data-close-nav>About Us</a>
         <a href="{{ route('products') }}" data-close-nav>Insurance Products</a>
         <a href="{{ route('services') }}" data-close-nav>Services</a>
-        <a href="{{ route('why-us') }}" data-close-nav>Why Work With Me</a>
+        <a href="{{ route('why-us') }}" data-close-nav>Why Choose Us</a>
         <a href="{{ route('testimonials') }}" data-close-nav>Reviews</a>
         <a href="{{ route('faq') }}" data-close-nav>FAQ</a>
         <a href="{{ route('contact') }}" data-close-nav>Contact</a>

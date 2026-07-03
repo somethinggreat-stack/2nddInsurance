@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @php $site = config('site'); @endphp
 @section('title', 'Terms of Use')
-@section('description', 'Terms of Use for the ' . $site['agent'] . ' website.')
+@section('description', 'Terms of Use for the ' . $site['brand'] . ' website.')
 
 @section('content')
 
@@ -10,7 +10,7 @@
 <section class="section">
     <div class="container container-narrow" style="line-height:1.8;color:var(--slate-700)">
         <div class="stack reveal">
-            <p>Welcome to the website of {{ $site['agent'] }}, an authorized {{ $site['company'] }} agent. By accessing or using this website, you agree to these Terms of Use.</p>
+            <p>Welcome to the website of {{ $site['brand'] }}, sponsored by {{ $site['company'] }}. By accessing or using this website, you agree to these Terms of Use.</p>
 
             <h2 style="font-size:1.4rem">Informational Purposes Only</h2>
             <p>The content on this site is provided for general informational purposes and does not constitute an offer of insurance, a contract, or a guarantee of coverage. Actual coverage, terms, eligibility, and pricing are determined by {{ $site['company'] }} and are subject to underwriting, policy terms, and applicable law.</p>
@@ -28,7 +28,7 @@
             <p>This website is provided "as is." To the fullest extent permitted by law, we disclaim liability for any damages arising from your use of the site.</p>
 
             <h2 style="font-size:1.4rem">Contact</h2>
-            <p>Questions about these Terms? Contact {{ $site['agent'] }} at <a href="mailto:{{ $site['email'] }}" class="text-red">{{ $site['email'] }}</a> or <a href="tel:{{ $site['phone_raw'] }}" class="text-red">{{ $site['phone'] }}</a>.</p>
+            <p>Questions about these Terms? Contact {{ $site['brand'] }} at <a href="mailto:{{ $site['email'] }}" class="text-red">{{ $site['email'] }}</a> or <a href="tel:{{ $site['phone_raw'] }}" class="text-red">{{ $site['phone'] }}</a>.</p>
 
             <p style="font-size:.9rem;color:var(--slate-500);margin-top:1.5rem">These Terms are a general template and should be reviewed by qualified legal counsel and aligned with {{ $site['company'] }} requirements before publishing.</p>
         </div>

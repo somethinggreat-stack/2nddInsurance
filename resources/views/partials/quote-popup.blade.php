@@ -5,7 +5,7 @@
         <button class="qpop__x" data-qpop-close aria-label="Close">&times;</button>
         <div class="qpop__badge">⚡ FREE QUOTE — 2 MINUTES</div>
         <h3 class="qpop__title">WANT TO <span>SAVE</span><br>ON INSURANCE?</h3>
-        <p class="qpop__sub">Get your <strong>FREE</strong> personalized quote from Patrick today — no obligation, no pressure!</p>
+        <p class="qpop__sub">Get your <strong>FREE</strong> personalized Michigan quote from Quote Shark Michigan today — no obligation, no pressure!</p>
         <a href="{{ route('home') }}#quiz" class="qpop__cta" data-qpop-go>👉 GET MY FREE QUOTE</a>
         <button class="qpop__dismiss" data-qpop-close>No thanks, maybe later</button>
     </div>

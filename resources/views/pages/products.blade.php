@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @php $site = config('site'); @endphp
 @section('title', 'Insurance Products')
-@section('description', 'Explore Auto, Home, Life and Business insurance products from Patrick Yasso, your local Farmers Insurance agent in Michigan. Get a free quote today.')
+@section('description', 'Explore Auto, Home, Life and Business insurance products from Quote Shark Michigan, sponsored by Farmers Insurance, serving all of Michigan. Get a free quote today.')
 
 @section('content')
 
@@ -34,8 +34,8 @@
             <div class="split__copy reveal" data-delay="1">
                 <span class="eyebrow"><x-icon :name="$s['icon']" /> {{ $s['title'] }}</span>
                 <h2>{{ $s['title'] }} that fits your world</h2>
-                <p class="lead">{{ $s['short'] }} I'll walk you through your options in plain English and help you choose coverage that protects you without overpaying.</p>
-                <p>Bundle this with your other policies and you could unlock meaningful savings — ask me how much you could keep in your pocket.</p>
+                <p class="lead">{{ $s['short'] }} We'll walk you through your options in plain English and help you choose coverage that protects you without overpaying.</p>
+                <p>Bundle this with your other policies and you could unlock meaningful savings — ask us how much you could keep in your pocket.</p>
                 <div class="btn-row mt-3">
                     <a href="{{ route('quote') }}?type={{ $s['key'] }}" class="btn btn--primary">Get {{ $s['title'] }} Quote <x-icon name="arrow-right" /></a>
                     <a href="tel:{{ $site['phone_raw'] }}" class="btn btn--ghost"><x-icon name="phone" /> Call to Discuss</a>
@@ -46,6 +46,6 @@
 </section>
 @endforeach
 
-@include('partials.sections.cta-band', ['heading' => 'Not sure which coverage you need?', 'sub' => "Take our quick questionnaire and I'll build a personalized recommendation just for you."])
+@include('partials.sections.cta-band', ['heading' => 'Not sure which coverage you need?', 'sub' => "Take our quick questionnaire and we'll build a personalized recommendation just for you."])
 
 @endsection

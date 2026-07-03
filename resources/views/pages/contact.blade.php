@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @php $site = config('site'); @endphp
 @section('title', 'Contact')
-@section('description', 'Contact Patrick Yasso, your local Farmers Insurance agent in Walled Lake, MI. Call (248) 504-8848 or send a message for a free quote.')
+@section('description', 'Contact Quote Shark Michigan in Walled Lake, MI — sponsored by Farmers Insurance. Call (248) 504-8848 or send a message for a free Michigan insurance quote.')
 
 @section('content')
 
@@ -13,7 +13,7 @@
             {{-- Info --}}
             <div class="split__copy reveal">
                 <span class="eyebrow"><x-icon name="phone" /> Let's Talk</span>
-                <h2>Reach Patrick directly</h2>
+                <h2>Reach us directly</h2>
                 <p class="lead">No call centers, no runaround — just a local agent ready to help.</p>
 
                 <div style="display:grid;gap:1rem;margin-top:1.6rem">
@@ -45,7 +45,7 @@
             <div class="reveal" data-delay="1">
                 <div class="form-card">
                     <h2 style="font-size:1.6rem">Send a message</h2>
-                    <p style="margin:.4rem 0 1.4rem">I'll get back to you personally — usually the same day.</p>
+                    <p style="margin:.4rem 0 1.4rem">We'll get back to you personally — usually the same day.</p>
 
                     @include('partials.alerts')
 
@@ -76,7 +76,7 @@
                             <label for="message">Message</label>
                             <textarea id="message" name="message" placeholder="Tell me a little about what you're looking for…">{{ old('message') }}</textarea>
                             @error('message')<span class="err">{{ $message }}</span>@enderror
-                            <p class="form-hint" style="margin-top:.7rem"><x-icon name="phone" style="width:.95em;height:.95em;display:inline" /> Just add a <strong>phone or email</strong> so Patrick can reach you — everything else is optional.</p>
+                            <p class="form-hint" style="margin-top:.7rem"><x-icon name="phone" style="width:.95em;height:.95em;display:inline" /> Just add a <strong>phone or email</strong> so we can reach you — everything else is optional.</p>
                         </div>
                         <button type="submit" class="btn btn--primary btn--block btn--lg">Send Message <x-icon name="arrow-right" /></button>
                         <p style="text-align:center;font-size:.8rem;color:var(--slate-500);margin-top:.9rem"><x-icon name="lock" style="width:.9em;height:.9em;display:inline" /> Your information is kept private and never shared.</p>

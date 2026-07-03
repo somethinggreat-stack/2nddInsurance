@@ -13,9 +13,9 @@
 return [
 
     'agent'    => 'Patrick Yasso',
-    'role'     => 'Insurance Agent',
+    'role'     => 'President',
     'company'  => 'Farmers Insurance',
-    'brand'    => 'Patrick Yasso Insurance',
+    'brand'    => 'Quote Shark Michigan',
     'license'  => 'MI License #16520971',
     'tagline'  => 'Protecting Michigan Families & Businesses',
     'subtag'   => "Let's protect what matters most.",
@@ -104,18 +104,18 @@ return [
 
     // Why work with me
     'reasons' => [
-        ['icon' => 'pin',     'title' => 'Statewide Michigan Coverage', 'text' => "I insure families and businesses across all of Michigan \u{2014} wherever you are in the state, I can help."],
-        ['icon' => 'user',    'title' => "I'm Your Dedicated Agent",  'text' => 'You work directly with me — never a call center. Personal, responsive, and accountable.'],
-        ['icon' => 'shield',  'title' => 'Trusted Farmers Coverage',  'text' => 'I bring you the strength and stability of Farmers Insurance, delivered with a personal touch.'],
-        ['icon' => 'wallet',  'title' => 'Smart Bundling & Savings',  'text' => "I'll combine your auto, home, life and business policies to unlock meaningful discounts."],
-        ['icon' => 'clock',   'title' => 'Fast, Easy Quotes',         'text' => 'I make it easy to get a tailored quote — by phone, online, or in person at my office.'],
-        ['icon' => 'support', 'title' => 'Claims Support That Counts', 'text' => "I'm a real advocate in your corner, guiding you through the claims process."],
+        ['icon' => 'pin',     'title' => 'Statewide Michigan Coverage', 'text' => "We insure families and businesses across all of Michigan \u{2014} wherever you are in the state, we can help."],
+        ['icon' => 'user',    'title' => 'Your Dedicated Michigan Team', 'text' => 'You work directly with us — never a call center. Personal, responsive, and accountable.'],
+        ['icon' => 'shield',  'title' => 'Sponsored by Farmers Insurance', 'text' => 'We bring you the strength and stability of Farmers Insurance, delivered with local Michigan service.'],
+        ['icon' => 'wallet',  'title' => 'Smart Bundling & Savings',  'text' => "We'll combine your auto, home, life and business policies to unlock meaningful discounts."],
+        ['icon' => 'clock',   'title' => 'Fast, Easy Quotes',         'text' => 'We make it easy to get a tailored quote — by phone, online, or in person at our Michigan office.'],
+        ['icon' => 'support', 'title' => 'Claims Support That Counts', 'text' => "We're a real advocate in your corner, guiding you through the claims process."],
     ],
 
     // Process steps
     'steps' => [
-        ['title' => 'Tell Me About You',  'text' => 'Share a few quick details about what you want to protect — it takes minutes.'],
-        ['title' => 'I Build Your Plan',  'text' => 'I review your needs and build coverage options matched to your budget.'],
+        ['title' => 'Tell Us About You',  'text' => 'Share a few quick details about what you want to protect in Michigan — it takes minutes.'],
+        ['title' => 'We Build Your Plan', 'text' => 'We review your needs and build coverage options matched to your budget.'],
         ['title' => 'You Get Covered',    'text' => 'Choose your plan with confidence and enjoy lasting peace of mind.'],
     ],
 
@@ -147,13 +147,13 @@ return [
     ],
 
     'faqs' => [
-        ['q' => 'What types of insurance do you offer?', 'a' => 'As a Farmers Insurance agent I help with Auto, Home, Life and Business insurance — plus renters, condo, and commercial coverage. If you’re not sure what you need, I’ll help you figure it out.'],
-        ['q' => 'How do I get a quote?', 'a' => 'You can request a free quote online through our quote form or detailed questionnaire, call (248) 504-8848, or stop by the office in Walled Lake. Most quotes take just a few minutes.'],
-        ['q' => 'Can I bundle policies to save money?', 'a' => 'Absolutely. Bundling auto, home, life and business policies is one of the easiest ways to lower your overall premium. I’ll show you exactly what you could save.'],
-        ['q' => 'Do you only serve the Walled Lake area?', 'a' => 'I’m based in Walled Lake but proudly serve families and businesses throughout Michigan. Wherever you are in the state, I can help.'],
-        ['q' => 'Will I work with you directly or a call center?', 'a' => 'You work directly with me, Patrick Yasso. You get one dedicated, accountable agent who knows you and your coverage.'],
-        ['q' => 'What do I need to switch my insurance?', 'a' => 'Usually just your current policy details and a few basics about what you’re insuring. I’ll handle the heavy lifting and make the switch smooth.'],
-        ['q' => 'How does the claims process work?', 'a' => 'If something happens, I’m your advocate. I’ll guide you through filing and follow up to help make sure you’re taken care of quickly.'],
+        ['q' => 'What types of insurance do you offer?', 'a' => 'As a Michigan insurance team sponsored by Farmers Insurance, we help with Auto, Home, Life and Business insurance — plus renters, condo, and commercial coverage. If you’re not sure what you need, we’ll help you figure it out.'],
+        ['q' => 'How do I get a quote?', 'a' => 'You can request a free quote online through our quote form or detailed questionnaire, call (248) 504-8848, or stop by our office in Walled Lake, Michigan. Most quotes take just a few minutes.'],
+        ['q' => 'Can I bundle policies to save money?', 'a' => 'Absolutely. Bundling auto, home, life and business policies is one of the easiest ways to lower your overall premium. We’ll show you exactly what you could save.'],
+        ['q' => 'Do you only serve the Walled Lake area?', 'a' => 'We’re based in Walled Lake but proudly serve families and businesses throughout all of Michigan. Wherever you are in the state, we can help.'],
+        ['q' => 'Will I work with you directly or a call center?', 'a' => 'You work directly with a dedicated, licensed Michigan agent — never a call center. You get one accountable point of contact who knows you and your coverage.'],
+        ['q' => 'What do I need to switch my insurance?', 'a' => 'Usually just your current policy details and a few basics about what you’re insuring in Michigan. We’ll handle the heavy lifting and make the switch smooth.'],
+        ['q' => 'How does the claims process work?', 'a' => 'If something happens, we’re your advocate. We’ll guide you through filing and follow up to help make sure you’re taken care of quickly.'],
     ],
 
     'coverage_areas' => ['Walled Lake', 'Novi', 'Commerce Township', 'Wixom', 'White Lake', 'Milford', 'West Bloomfield', 'Wolverine Lake', 'Farmington Hills', 'Northville'],

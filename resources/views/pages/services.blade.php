@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @php $site = config('site'); @endphp
 @section('title', 'Our Services')
-@section('description', 'How Patrick Yasso helps Michigan clients — free quotes, policy reviews, bundling, claims support and ongoing service from a dedicated local Farmers agent.')
+@section('description', 'How Quote Shark Michigan helps Michigan clients — free quotes, policy reviews, bundling, claims support and ongoing service, sponsored by Farmers Insurance.')
 
 @section('content')
 
@@ -10,7 +10,7 @@
 <section class="section">
     <div class="container">
         <div class="section-head center reveal">
-            <span class="eyebrow"><x-icon name="sparkles" /> How I Help</span>
+            <span class="eyebrow"><x-icon name="sparkles" /> How We Help</span>
             <h2>Full-service insurance, the local way</h2>
             <p class="lead">Everything you need to get covered, stay covered, and feel confident along the way.</p>
         </div>

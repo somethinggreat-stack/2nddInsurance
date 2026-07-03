@@ -15,8 +15,10 @@ deployment:
     - /bin/cp -f artisan $DEPLOYPATH
     - /bin/cp -f composer.json $DEPLOYPATH
     - /bin/cp -f composer.lock $DEPLOYPATH
-    # Clear Laravel's cached config/routes so changes take effect immediately.
+    # Clear Laravel's cached config/routes and compiled Blade views so every
+    # change (routes, config, templates) takes effect immediately after a pull.
     - /bin/rm -f $DEPLOYPATH/bootstrap/cache/config.php
     - /bin/rm -f $DEPLOYPATH/bootstrap/cache/routes-v7.php
+    - /bin/rm -rf $DEPLOYPATH/storage/framework/views/*.php
     # Record each deploy so you can confirm it ran.
     - /bin/echo "Deployed on $(date)" >> $DEPLOYPATH/storage/logs/deploy.log

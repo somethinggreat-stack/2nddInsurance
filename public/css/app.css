@@ -260,7 +260,16 @@ strong { color: var(--slate-900); font-weight: 700; }
 }
 
 /* ---------- 7. Hero ---------- */
-.hero { position:relative; background: var(--navy); color:#fff; overflow:hidden; isolation:isolate; }
+.hero {
+  position:relative; color:#fff; overflow:hidden; isolation:isolate; background-color: var(--navy);
+  background-image:
+    linear-gradient(180deg, rgba(2,31,87,.88) 0%, rgba(2,31,87,.78) 45%, rgba(2,31,87,.95) 90%, var(--navy) 100%),
+    url('/images/hero-bg.jpg');
+  background-size: cover; background-position: center; background-repeat: no-repeat;
+  min-height: calc(100vh - 110px); display:flex; align-items:center;
+}
+.hero > .container{ width:100%; }
+@media (max-width:768px){ .hero{ min-height:auto; } }
 .hero::before{ /* glow */
   content:""; position:absolute; width:60vw; height:60vw; right:-12vw; top:-18vw; z-index:-1;
   background: radial-gradient(circle, rgba(2,79,157,.55), transparent 62%); filter:blur(10px);
@@ -269,7 +278,7 @@ strong { color: var(--slate-900); font-weight: 700; }
   content:""; position:absolute; left:-10vw; bottom:-16vw; width:46vw; height:46vw; z-index:-1;
   background: radial-gradient(circle, rgba(187,10,30,.30), transparent 65%);
 }
-.hero__grid { display:grid; grid-template-columns: 1.08fr .92fr; gap:clamp(30px,5vw,64px); align-items:center; padding-block: clamp(24px,3vw,44px) clamp(8px,1.4vw,16px); }
+.hero__grid { display:grid; grid-template-columns: 1fr 1.05fr; gap:clamp(30px,5vw,64px); align-items:center; padding-block: clamp(24px,3vw,44px) clamp(8px,1.4vw,16px); }
 .hero__badges { display:flex; gap:.6rem; flex-wrap:wrap; margin-bottom:1.4rem; }
 .chip { display:inline-flex; align-items:center; gap:.45rem; font-size:.82rem; font-weight:600; font-family:var(--font-display);
   background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.16); color:#eaf1ff; padding:.45rem .85rem; border-radius:var(--r-pill); backdrop-filter:blur(6px); }
@@ -378,12 +387,41 @@ strong { color: var(--slate-900); font-weight: 700; }
 @media (max-width:640px){ .stats{ grid-template-columns:1fr 1fr; } }
 
 /* ---------- 11. Steps / how it works ---------- */
-.steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(20px,3vw,34px); counter-reset:step; }
-.step{ position:relative; padding-top:.5rem; }
-.step__num{ width:54px;height:54px;border-radius:50%; display:grid;place-items:center; font-family:var(--font-display); font-weight:800; font-size:1.3rem; color:#fff; background:var(--grad-navy); box-shadow:var(--sh-blue); margin-bottom:1rem; }
-.step h3{ font-size:1.25rem; margin-bottom:.4rem; }
-.step__connector{ position:absolute; top:27px; left:60px; right:-20px; height:2px; background:linear-gradient(90deg,var(--slate-200),transparent); }
-@media (max-width:760px){ .steps{ grid-template-columns:1fr; } .step__connector{display:none;} }
+.steps{ display:flex; align-items:stretch; justify-content:center; gap:clamp(10px,1.6vw,22px); }
+.step-box{
+  flex:1; position:relative; background:#fff; border:1px solid var(--slate-100); border-radius:18px;
+  padding:2rem 1.6rem 1.8rem; text-align:center; box-shadow:0 10px 30px -14px rgba(2,79,157,.25);
+  transition:transform .35s var(--ease), box-shadow .35s;
+}
+.step-box:hover{ transform:translateY(-8px); box-shadow:0 26px 55px -18px rgba(2,79,157,.5); }
+.step-box .step__num{
+  width:58px;height:58px;border-radius:50%; display:grid;place-items:center; margin:0 auto 1.1rem;
+  font-family:var(--font-display); font-weight:800; font-size:1.35rem; color:#fff; background:var(--grad-navy);
+  animation:numGlow 2.6s ease-in-out infinite;
+}
+.step-box h3{ font-size:1.25rem; margin-bottom:.45rem; }
+.step-arrow{ flex:none; display:grid; place-items:center; color:var(--red); }
+.step-arrow .ico{ width:34px; height:34px; animation:arrowNudge 1.4s ease-in-out infinite; }
+@keyframes numGlow{
+  0%,100%{ box-shadow:0 0 0 5px rgba(2,79,157,.10), 0 8px 20px -6px rgba(2,79,157,.55); }
+  50%{ box-shadow:0 0 0 10px rgba(2,79,157,.05), 0 12px 28px -4px rgba(2,79,157,.85); }
+}
+@keyframes arrowNudge{ 0%,100%{ transform:translateX(0); } 50%{ transform:translateX(6px); } }
+@media (max-width:760px){ .steps{ flex-direction:column; } .step-arrow{ transform:rotate(90deg); } }
+@media (prefers-reduced-motion: reduce){ .step-box .step__num, .step-arrow .ico{ animation:none; } }
+
+/* ===== Site-wide "alive" polish: glows, hovers, floats ===== */
+.card__ico{ transition:transform .4s var(--ease), box-shadow .4s; }
+.card:hover .card__ico{ transform:translateY(-3px) scale(1.1) rotate(-4deg); box-shadow:0 12px 26px -6px rgba(2,79,157,.7); }
+.btn{ transition:transform .2s var(--ease), box-shadow .25s, filter .2s; }
+.btn--primary:hover{ transform:translateY(-2px); box-shadow:0 14px 30px -8px rgba(187,10,30,.6); }
+.btn--navy:hover{ transform:translateY(-2px); box-shadow:0 14px 30px -8px rgba(2,79,157,.6); }
+.btn--white:hover,.btn--ghost:hover{ transform:translateY(-2px); }
+.svc2-card__arrow{ animation:arrowNudge 1.6s ease-in-out infinite; }
+.qchip span{ transition:transform .18s var(--ease), border-color var(--t), color var(--t), box-shadow var(--t); }
+.qchip span:hover{ transform:translateY(-2px); }
+.badge-soft{ transition:transform .25s var(--ease), box-shadow .25s; }
+.badge-soft:hover{ transform:translateY(-3px); box-shadow:0 10px 22px -10px rgba(2,79,157,.5); }
 
 /* ---------- 12. Testimonials ---------- */
 .testi{ background:#fff; border:1px solid var(--slate-100); border-radius:var(--r-lg); padding:1.8rem; box-shadow:var(--sh-sm); height:100%; display:flex; flex-direction:column; }
@@ -391,7 +429,7 @@ strong { color: var(--slate-900); font-weight: 700; }
 .testi__stars .ico{ width:1.15em;height:1.15em; }
 .testi__quote{ color:var(--slate-700); font-size:1.05rem; line-height:1.7; flex:1; }
 .testi__by{ display:flex; align-items:center; gap:.8rem; margin-top:1.4rem; }
-.testi__avatar{ width:48px;height:48px;border-radius:50%; background:var(--grad-navy); color:#fff; display:grid;place-items:center; font-family:var(--font-display); font-weight:700; }
+.testi__avatar{ width:48px;height:48px;border-radius:50%; background:var(--grad-navy); color:#fff; display:grid;place-items:center; font-family:var(--font-display); font-weight:700; object-fit:cover; overflow:hidden; border:2px solid #fff; box-shadow:0 3px 10px -3px rgba(2,31,87,.5); flex:none; }
 .testi__by b{ display:block; color:var(--navy); font-family:var(--font-display); }
 .testi__by span{ font-size:.85rem; color:var(--slate-500); }
 .testi__meta{ display:inline-flex; align-items:center; gap:.35rem; flex-wrap:wrap; }
@@ -571,7 +609,7 @@ strong { color: var(--slate-900); font-weight: 700; }
 .check-list .ico{ flex:none; width:24px;height:24px; color:#fff; background:var(--grad-navy); border-radius:50%; padding:5px; }
 
 /* ---------- 20. Page hero (inner pages) ---------- */
-.page-hero{ background:var(--grad-navy-deep); color:#fff; padding-block:clamp(56px,8vw,96px); position:relative; overflow:hidden; text-align:center; }
+.page-hero{ background:linear-gradient(180deg, rgba(2,31,87,.90) 0%, rgba(2,31,87,.86) 50%, rgba(2,31,87,.93) 100%), url('/images/page-bg.jpg'); background-size:cover; background-position:center; color:#fff; padding-block:clamp(56px,8vw,96px); position:relative; overflow:hidden; text-align:center; }
 .page-hero::before{ content:""; position:absolute; right:-8vw; top:-10vw; width:40vw; height:40vw; background:radial-gradient(circle,rgba(2,79,157,.5),transparent 65%); }
 .page-hero::after{ content:""; position:absolute; left:-8vw; bottom:-12vw; width:34vw; height:34vw; background:radial-gradient(circle,rgba(187,10,30,.22),transparent 65%); }
 .page-hero h1{ color:#fff; position:relative; max-width:22ch; margin-inline:auto; }
@@ -832,3 +870,139 @@ strong { color: var(--slate-900); font-weight: 700; }
   50%{ transform:scale(1.025); box-shadow:0 6px 16px rgba(187,10,30,.28); }
 }
 @media (prefers-reduced-motion: reduce){ .form-flag{ animation:none; } }
+
+/* ---------- Quote Shark Michigan text logo ---------- */
+.brand-logo{ display:inline-flex; align-items:center; gap:.6rem; }
+.brand-logo__mark{
+  width:44px; height:44px; border-radius:12px; background:var(--grad-navy); color:#fff;
+  display:grid; place-items:center; box-shadow:var(--sh-blue); flex:none;
+}
+.brand-logo__mark .ico{ width:24px; height:24px; }
+.brand-logo__text{ display:flex; flex-direction:column; line-height:1; }
+.brand-logo__name{ font-family:var(--font-display); font-weight:800; font-size:1.22rem; color:var(--navy); letter-spacing:-.01em; }
+.brand-logo__sub{ font-size:.66rem; font-weight:800; letter-spacing:.24em; color:var(--red); margin-top:3px; }
+@media (max-width:768px){
+  .brand-logo__mark{ width:38px; height:38px; }
+  .brand-logo__mark .ico{ width:20px; height:20px; }
+  .brand-logo__name{ font-size:1.05rem; }
+}
+
+/* ---------- Animated red-yellow moving border around the quote form ---------- */
+.form-glow{ position:relative; border-radius:26px; padding:5px; overflow:hidden; box-shadow:0 22px 55px -22px rgba(187,10,30,.45); }
+.form-glow::before{
+  content:""; position:absolute; z-index:0; inset:-60%;
+  background:conic-gradient(from 0deg, #BB0A1E, #FFD400, #BB0A1E, #FFD400, #BB0A1E, #FFD400, #BB0A1E);
+  animation:formspin 4s linear infinite;
+}
+.form-glow > .form-card{ position:relative; z-index:1; border-radius:22px; height:100%; }
+@keyframes formspin{ to{ transform:rotate(1turn); } }
+@media (prefers-reduced-motion: reduce){ .form-glow::before{ animation:none; } }
+
+/* ---------- Roaming sharks in the hero background ---------- */
+.hero__sharks{ position:absolute; inset:0; z-index:-1; overflow:hidden; pointer-events:none; }
+.shark{ position:absolute; height:auto; opacity:.6; filter:drop-shadow(0 10px 20px rgba(0,0,0,.45)); will-change:transform; }
+@keyframes swimRight{
+  0%{ transform:translate(-14vw,0) scaleX(-1); }
+  25%{ transform:translate(16vw,-16px) scaleX(-1); }
+  50%{ transform:translate(48vw,0) scaleX(-1); }
+  75%{ transform:translate(80vw,-16px) scaleX(-1); }
+  100%{ transform:translate(116vw,0) scaleX(-1); }
+}
+@keyframes swimLeft{
+  0%{ transform:translate(116vw,0); }
+  25%{ transform:translate(80vw,14px); }
+  50%{ transform:translate(48vw,0); }
+  75%{ transform:translate(16vw,14px); }
+  100%{ transform:translate(-14vw,0); }
+}
+.s1{ top:12%; width:90px;  opacity:.45; animation:swimRight 30s linear infinite; animation-delay:-4s; }
+.s2{ top:40%; width:110px; opacity:.4;  animation:swimLeft 42s linear infinite; animation-delay:-12s; }
+.s3{ top:64%; width:80px;  opacity:.45; animation:swimRight 34s linear infinite; animation-delay:-18s; }
+.s4{ top:80%; width:100px; opacity:.38; animation:swimLeft 48s linear infinite; animation-delay:-26s; }
+.s5{ top:26%; width:72px;  opacity:.42; animation:swimRight 44s linear infinite; animation-delay:-33s; }
+@media (max-width:768px){ .s2,.s4{ display:none; } .s1,.s3,.s5{ opacity:.35; } }
+@media (prefers-reduced-motion: reduce){ .shark{ animation:none !important; display:none; } }
+
+/* ---------- Michigan map (hero) — image straight, no box ---------- */
+.mi-map-img{
+  width:100%; height:auto; max-width:760px; display:block; margin-inline:auto;
+  filter:drop-shadow(0 14px 30px rgba(0,0,0,.4));
+}
+@media (max-width:768px){ .mi-map-img{ max-width:440px; } }
+
+/* ---------- What We Cover — sticky-left / scrolling-right services ---------- */
+.svc2{ display:grid; grid-template-columns:.82fr 1.18fr; gap:clamp(1.6rem,4vw,3.5rem); align-items:start; margin-top:2.4rem; }
+.svc2__left{ position:sticky; top:96px; align-self:start; }
+.svc2__left h3{ font-size:clamp(2.1rem,3.6vw,3rem); color:#fff; line-height:1.12; margin:0 0 1rem; letter-spacing:-.01em; }
+.svc2__left p{ color:#b9c6e6; font-size:1.02rem; line-height:1.6; margin:0 0 1.2rem; max-width:42ch; }
+.svc2__bullets{ list-style:none; display:grid; gap:.7rem; margin:0 0 1.6rem; padding:0; }
+.svc2__bullets li{ display:flex; align-items:center; gap:.6rem; font-weight:600; color:#eaf1ff; }
+.svc2__bullets .ico{ width:1.15em; height:1.15em; color:#fff; background:var(--red); border-radius:50%; padding:4px; flex:none; }
+.svc2__right{ display:flex; flex-direction:column; gap:1.3rem; }
+.svc2-card{
+  position:relative; overflow:hidden; border-radius:22px; padding:clamp(1.6rem,2.5vw,2.2rem); min-height:440px;
+  display:flex; flex-direction:column; color:#fff; box-shadow:var(--sh-lg);
+  background-color:var(--navy); background-size:cover; background-position:center;
+  transition:transform var(--t) var(--ease), box-shadow var(--t);
+}
+.svc2-card:hover{ transform:translateY(-4px); box-shadow:0 26px 54px -22px rgba(0,0,0,.7); }
+.svc2-card__wm{ position:absolute; top:-26px; right:-18px; opacity:.16; pointer-events:none; }
+.svc2-card__wm .ico{ width:190px; height:190px; }
+
+/* Left-side image under the sticky copy */
+.svc2__left-img{ margin:1.8rem 0 0; }
+.svc2__left-img img{ width:100%; aspect-ratio:16/10; object-fit:cover; border-radius:18px; box-shadow:var(--sh-lg); display:block; }
+.svc2__left-img figcaption{ margin-top:.7rem; font-size:.86rem; color:var(--slate-500); font-style:italic; }
+.svc2-card__top{ display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; }
+.svc2-card__top h3{ color:#fff; font-size:clamp(1.55rem,2.8vw,2.05rem); line-height:1.08; margin:0; max-width:15ch; }
+.svc2-card__num{ font-family:var(--font-display); font-weight:800; font-size:1rem; opacity:.75; }
+.svc2-card p{ color:rgba(255,255,255,.92); font-size:1rem; line-height:1.55; margin:.9rem 0 1.4rem; max-width:46ch; position:relative; }
+.svc2-card__foot{ display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-top:auto; }
+.svc2-card__link{ color:#fff; font-family:var(--font-display); font-weight:800; text-decoration:none; }
+.svc2-card__arrow{ width:52px; height:52px; border-radius:50%; background:#fff; color:var(--navy); display:grid; place-items:center; text-decoration:none; flex:none; transition:transform var(--t) var(--ease); }
+.svc2-card__arrow .ico{ width:22px; height:22px; }
+.svc2-card:hover .svc2-card__arrow{ transform:translateX(4px) scale(1.05); }
+@media (max-width:900px){
+  .svc2{ grid-template-columns:1fr; }
+  .svc2__left{ position:static; }
+}
+
+/* Faint Michigan silhouette watermark behind the hero */
+.hero__mi{ position:absolute; inset:0; z-index:-1; overflow:hidden; pointer-events:none; }
+.hero__mi svg{ position:absolute; left:-7%; top:50%; transform:translateY(-50%); height:140%; width:auto; opacity:.06; }
+.hero__mi svg path{ fill:#cfe0ff; }
+@media (max-width:880px){ .hero__mi svg{ left:auto; right:-25%; height:115%; opacity:.05; } }
+
+/* ---------- Extra quote-form fields (state lock, notes, file upload) ---------- */
+.field-note{ font-size:.8rem; color:var(--slate-500); margin-top:.35rem; line-height:1.45; }
+.locked-field{ background:var(--slate-100) !important; color:var(--slate-600) !important; cursor:not-allowed; font-weight:700; }
+.quote-form input[type="file"]{
+  padding:.6rem .7rem; border:1.5px dashed var(--slate-300); border-radius:12px; background:#fbfcfe;
+  font-size:.9rem; color:var(--slate-600); cursor:pointer; width:100%;
+}
+.quote-form input[type="file"]::file-selector-button{
+  border:0; background:var(--grad-navy); color:#fff; font-family:var(--font-display); font-weight:700;
+  padding:.55rem 1rem; border-radius:999px; margin-right:.8rem; cursor:pointer;
+}
+
+/* ---------- Mobile: tighter gutters + full-width form ---------- */
+@media (max-width:600px){
+  :root{ --gutter:14px; }
+  .form-glow{ padding:4px; border-radius:18px; box-shadow:0 14px 34px -16px rgba(187,10,30,.45); }
+  .form-card{ padding:1.15rem .95rem; }
+  .quote-chips{ grid-template-columns:1fr; }
+  .qchip span{ justify-content:flex-start; padding-left:1.1rem; }
+  .form-grid-2{ grid-template-columns:1fr; }
+  .svc2{ gap:1.4rem; }
+}
+
+/* ---------- "Don't let life eat you alive" shark CTA section ---------- */
+.shark-cta{ background:linear-gradient(115deg,#ffffff 0%, #eef4ff 55%, #fdeef1 100%); position:relative; overflow:hidden; }
+.shark-cta h2{ font-size:clamp(2.2rem,4.5vw,3.4rem); line-height:1.08; color:var(--navy); }
+.shark-cta .accent{ color:var(--red); -webkit-text-fill-color:var(--red); background:none; }
+.shark-cta .lead{ color:var(--slate-700); }
+.shark-cta p{ color:var(--slate-600); }
+.shark-cta .check-list li{ color:var(--navy); font-weight:600; }
+.shark-cta .check-list .ico{ color:#fff; background:var(--red); border-radius:50%; padding:4px; width:1.2em; height:1.2em; }
+.shark-cta__img img{ width:100%; height:auto; border-radius:22px; box-shadow:0 26px 60px -22px rgba(2,31,87,.45); border:1px solid var(--slate-100); }
+@media (max-width:880px){ .shark-cta__img{ max-width:520px; margin-inline:auto; } }

@@ -1,5 +1,5 @@
 @php $site = config('site'); @endphp
-<form id="quoteForm" class="quote-form" action="{{ route('questionnaire.store') }}" method="POST">
+<form id="quoteForm" class="quote-form" action="{{ route('questionnaire.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
 
@@ -54,12 +54,19 @@
         </div>
     </div>
 
-    <p class="form-hint"><x-icon name="phone" style="width:.95em;height:.95em;display:inline" /> Just add a <strong>phone or email</strong> so Patrick can reach you — everything else is optional, so feel free to submit even if you can't fill it all out.</p>
+    <p class="form-hint"><x-icon name="phone" style="width:.95em;height:.95em;display:inline" /> Please complete so we can <strong>quote and contact you</strong>. Thank you!</p>
 
-    <div class="field">
-        <label>Full Address</label>
-        <input type="text" name="address" value="{{ old('address') }}" placeholder="Street, City, State, ZIP">
-        @error('address')<span class="err">{{ $message }}</span>@enderror
+    <div class="form-grid-2">
+        <div class="field">
+            <label>Full Address</label>
+            <input type="text" name="address" value="{{ old('address') }}" placeholder="Street, City, ZIP">
+            @error('address')<span class="err">{{ $message }}</span>@enderror
+        </div>
+        <div class="field">
+            <label>State</label>
+            <input type="text" name="state" value="Michigan" class="locked-field" readonly aria-readonly="true" title="We proudly serve Michigan only">
+            <span class="field-note">We proudly serve Michigan only.</span>
+        </div>
     </div>
 
     <div class="form-grid-2">
@@ -107,6 +114,18 @@
     <div class="field">
         <label>VEHICLES — YEAR, MAKE &amp; MODEL</label>
         <textarea name="vehicles" placeholder="e.g. 2021 Toyota RAV4&#10;2018 Honda Civic">{{ old('vehicles') }}</textarea>
+    </div>
+
+    <div class="field">
+        <label>Attach File — Insurance Declaration Pages</label>
+        <input type="file" name="declarations[]" multiple accept=".pdf,.jpg,.jpeg,.png,.heic,.webp,.doc,.docx">
+        <span class="field-note">Please upload your current insurance <strong>declaration pages for Home / Auto</strong> to get a more accurate quote. PDFs or photos welcome (optional).</span>
+        @error('declarations.*')<span class="err">{{ $message }}</span>@enderror
+    </div>
+
+    <div class="field">
+        <label>Notes</label>
+        <textarea name="notes" placeholder="Anything else we should know? (optional)">{{ old('notes') }}</textarea>
     </div>
 
     <button type="submit" class="btn btn--primary btn--block btn--lg"><x-icon name="check" /> Submit My Quote Request</button>

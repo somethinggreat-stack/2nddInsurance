@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @php $site = config('site'); @endphp
 @section('title', 'Insurance Questionnaire')
-@section('description', 'Answer a few quick questions and Patrick Yasso will build a personalized insurance recommendation for you. Free and no obligation.')
+@section('description', 'Answer a few quick questions and Quote Shark Michigan will build a personalized insurance recommendation for you. Free and no obligation.')
 
 @section('content')
 

@@ -34,10 +34,15 @@ class QuestionnaireController extends Controller
             'currently_insured' => 'nullable|string|max:40',
             'current_carrier'   => 'nullable|string|max:120',
             'best_time'         => 'nullable|string|max:60',
+            'notes'             => 'nullable|string|max:5000',
+            'declarations'      => 'nullable|array|max:10',
+            'declarations.*'    => 'file|mimes:pdf,jpg,jpeg,png,heic,webp,doc,docx|max:10240',
             'website'           => 'nullable|max:0', // honeypot
         ], [
-            'email.required_without' => 'Please add a phone number or an email so Patrick can reach you.',
-            'phone.required_without' => 'Please add a phone number or an email so Patrick can reach you.',
+            'email.required_without'  => 'Please add a phone number or an email so we can reach you.',
+            'phone.required_without'  => 'Please add a phone number or an email so we can reach you.',
+            'declarations.*.mimes'    => 'Please upload PDF, image, or document files only.',
+            'declarations.*.max'      => 'Each file must be 10 MB or smaller.',
         ]);
 
         // Human-readable payload for the agent (skip empties)
@@ -56,11 +61,30 @@ class QuestionnaireController extends Controller
         if (!empty($validated['insurance_types'])) {
             $payload['Quote Type'] = implode(', ', $validated['insurance_types']);
         }
+        $payload['State'] = 'Michigan'; // service area is locked to Michigan
         foreach ($labels as $field => $label) {
             $val = $validated[$field] ?? null;
             if (!empty($val)) {
                 $payload[$label] = $val;
             }
+        }
+
+        // Store any uploaded declaration pages and collect their paths for the
+        // admin notification email.
+        $attachments = [];
+        if ($request->hasFile('declarations')) {
+            foreach ($request->file('declarations') as $file) {
+                if ($file && $file->isValid()) {
+                    $stored = $file->store('lead-uploads');
+                    $attachments[] = [
+                        'path' => storage_path('app/' . $stored),
+                        'name' => $file->getClientOriginalName(),
+                    ];
+                }
+            }
+        }
+        if ($attachments) {
+            $payload['Attached Files'] = implode(', ', array_column($attachments, 'name'));
         }
 
         $lead = $this->leads->store([
@@ -69,8 +93,9 @@ class QuestionnaireController extends Controller
             'email'     => $validated['email'] ?? null,
             'phone'     => $validated['phone'] ?? null,
             'interests' => $validated['insurance_types'] ?? [],
+            'message'   => $validated['notes'] ?? null,
             'data'      => $payload,
-        ], $request);
+        ], $request, $attachments);
 
         return redirect()->route('thank-you')->with('lead', $lead->only('name', 'type'));
     }

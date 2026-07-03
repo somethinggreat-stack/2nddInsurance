@@ -9,8 +9,8 @@
     @php
         $site = config('site');
         $pageTitle = trim($__env->yieldContent('title'));
-        $title = $pageTitle ? $pageTitle . ' | ' . $site['agent'] . ' — ' . $site['company'] : $site['agent'] . ' — ' . $site['company'] . ' Agent in ' . $site['city'] . ', MI';
-        $desc = trim($__env->yieldContent('description')) ?: $site['tagline'] . '. Auto, Home, Life & Business insurance from ' . $site['agent'] . ', your local Farmers Insurance agent in ' . $site['city'] . ', Michigan. Get a free quote today.';
+        $title = $pageTitle ? $pageTitle . ' | ' . $site['brand'] : $site['brand'] . ' — Insurance in ' . $site['city'] . ', MI';
+        $desc = trim($__env->yieldContent('description')) ?: $site['tagline'] . '. Auto, Home, Life & Business insurance from ' . $site['brand'] . ', proudly serving all of Michigan. Get a free quote today.';
         $ogImage = asset('images/og-image.jpg');
         $canonical = url()->current();
     @endphp
@@ -19,11 +19,11 @@
     <meta name="description" content="{{ $desc }}">
     <link rel="canonical" href="{{ $canonical }}">
     <meta name="robots" content="index, follow">
-    <meta name="author" content="{{ $site['agent'] }}">
+    <meta name="author" content="{{ $site['brand'] }}">
 
     {{-- Open Graph --}}
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="{{ $site['agent'] }} — {{ $site['company'] }}">
+    <meta property="og:site_name" content="{{ $site['brand'] }}">
     <meta property="og:title" content="{{ $title }}">
     <meta property="og:description" content="{{ $desc }}">
     <meta property="og:image" content="{{ $ogImage }}">
@@ -53,7 +53,7 @@
     {!! json_encode([
         '@context' => 'https://schema.org',
         '@type' => 'InsuranceAgency',
-        'name' => $site['agent'] . ' — ' . $site['company'],
+        'name' => $site['brand'],
         'image' => $ogImage,
         'url' => url('/'),
         'telephone' => $site['phone'],
@@ -90,7 +90,6 @@
 
     @include('partials.footer')
     @include('partials.conversion')
-    @include('partials.quote-popup')
 
     <script src="{{ asset('js/app.js') }}?v={{ @filemtime(public_path('js/app.js')) ?: '1' }}" defer></script>
     @stack('scripts')

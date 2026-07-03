@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @php $site = config('site'); @endphp
 @section('title', 'Client Reviews')
-@section('description', 'Read reviews from Michigan families and businesses who trust Patrick Yasso for their Auto, Home, Life and Business insurance.')
+@section('description', 'Read reviews from Michigan families and businesses who trust Quote Shark Michigan for their Auto, Home, Life and Business insurance.')
 
 @section('content')
 
-@include('partials.page-hero', ['heading' => 'Client Reviews', 'sub' => 'Real stories from Michigan families and businesses who trust Patrick with what matters most.', 'crumb' => 'Reviews'])
+@include('partials.page-hero', ['heading' => 'Client Reviews', 'sub' => 'Real stories from Michigan families and businesses who trust ' . $site['brand'] . ' with what matters most.', 'crumb' => 'Reviews'])
 
 <section class="section">
     <div class="container">

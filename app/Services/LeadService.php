@@ -14,7 +14,7 @@ class LeadService
     /**
      * Persist a lead and notify the agent (failures are logged, never block the user).
      */
-    public function store(array $attributes, Request $request): Lead
+    public function store(array $attributes, Request $request, array $attachments = []): Lead
     {
         $attributes['ip_address'] = $request->ip();
         $attributes['user_agent'] = substr((string) $request->userAgent(), 0, 500);
@@ -22,10 +22,10 @@ class LeadService
 
         $lead = Lead::create($attributes);
 
-        // 1) Notify the agent of the new lead.
+        // 1) Notify the agent of the new lead (with any uploaded files attached).
         $to = config('site.notify_email', config('site.email'));
         try {
-            Mail::to($to)->send(new LeadReceived($lead));
+            Mail::to($to)->send(new LeadReceived($lead, $attachments));
             $this->logMail("OK    notification -> {$to}  (lead #{$lead->id} {$lead->name})");
         } catch (\Throwable $e) {
             $this->logMail("FAIL  notification -> {$to}  (lead #{$lead->id}): " . $e->getMessage());
@@ -48,7 +48,7 @@ class LeadService
 
     /**
      * Append one line to storage/logs/mail.log so every send (success or the
-     * exact failure reason) is visible at /mail-log — no repeated testing.
+     * exact failure reason) is recorded for later review via the server logs.
      */
     private function logMail(string $line): void
     {

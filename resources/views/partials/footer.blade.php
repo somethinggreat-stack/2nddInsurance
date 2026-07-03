@@ -3,8 +3,8 @@
     <div class="container">
         <div class="footer__grid">
             <div class="footer__brand">
-                <a href="{{ route('home') }}" class="brand" style="background:#fff;padding:.55rem .9rem;border-radius:14px;display:inline-flex;box-shadow:var(--sh-sm)">
-                    <img src="{{ asset('images/personallogo.png') }}" alt="{{ $site['agent'] }} — Insurance Agent" style="height:40px;width:auto">
+                <a href="{{ route('home') }}" class="brand" aria-label="{{ $site['brand'] }} home" style="background:#fff;padding:.55rem .9rem;border-radius:14px;display:inline-flex;box-shadow:var(--sh-sm);margin-bottom:1rem">
+                    <img src="{{ asset('images/personallogo.png') }}?v={{ @filemtime(public_path('images/personallogo.png')) ?: '1' }}" alt="{{ $site['brand'] }}" style="height:42px;width:auto">
                 </a>
                 <p class="footer__desc">{{ $site['tagline'] }}. Personalized Auto, Home, Life & Business coverage, backed by the strength of Farmers Insurance.</p>
                 <div class="agent-badge" style="margin-bottom:1.1rem">
@@ -32,8 +32,8 @@
             <div>
                 <h4>Company</h4>
                 <div class="footer__links">
-                    <a href="{{ route('about') }}">About Patrick</a>
-                    <a href="{{ route('why-us') }}">Why Work With Me</a>
+                    <a href="{{ route('about') }}">About Us</a>
+                    <a href="{{ route('why-us') }}">Why Choose Us</a>
                     <a href="{{ route('testimonials') }}">Client Reviews</a>
                     <a href="{{ route('faq') }}">FAQ</a>
                     <a href="{{ route('questionnaire') }}">Insurance Questionnaire</a>
@@ -53,7 +53,7 @@
         </div>
 
         <div class="footer__bottom">
-            <div>© <span data-year>{{ date('Y') }}</span> {{ $site['agent'] }} — {{ $site['company'] }} Agent. {{ $site['license'] }}.</div>
+            <div>© <span data-year>{{ date('Y') }}</span> {{ $site['brand'] }}. {{ $site['license'] }}.</div>
             <div style="display:flex;gap:1.2rem;flex-wrap:wrap">
                 <a href="{{ route('privacy') }}">Privacy Policy</a>
                 <a href="{{ route('terms') }}">Terms</a>
@@ -61,7 +61,7 @@
             </div>
         </div>
         <p style="font-size:.74rem;color:#7e8db5;padding-bottom:1.6rem;max-width:80ch">
-            Insurance products offered through {{ $site['agent'] }}, an authorized {{ $site['company'] }} agent. Coverage subject to policy terms, conditions, and availability. This site is for informational purposes and does not constitute a contract or guarantee of coverage.
+            {{ $site['brand'] }} — insurance products offered through licensed {{ $site['company'] }} agents. Coverage subject to policy terms, conditions, and availability. This site is for informational purposes and does not constitute a contract or guarantee of coverage.
         </p>
     </div>
 </footer>

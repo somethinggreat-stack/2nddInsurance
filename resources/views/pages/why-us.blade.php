@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @php $site = config('site'); @endphp
-@section('title', 'Why Work With Me')
-@section('description', 'Why Michigan families choose Patrick Yasso — one dedicated local Farmers agent, personalized service, smart savings, and real claims support.')
+@section('title', 'Why Choose Us')
+@section('description', 'Why Michigan families choose Quote Shark Michigan — a dedicated local team sponsored by Farmers Insurance, personalized service, smart savings, and real claims support.')
 
 @section('content')
 
-@include('partials.page-hero', ['heading' => 'Why Choose Patrick', 'sub' => 'Big-company strength meets small-town service. Here is the difference a dedicated local agent makes.', 'crumb' => 'Why Us'])
+@include('partials.page-hero', ['heading' => 'Why Choose ' . $site['brand'], 'sub' => 'Big-company strength meets small-town Michigan service. Here is the difference a dedicated local team makes.', 'crumb' => 'Why Us'])
 
 <section class="section">
     <div class="container">
@@ -49,9 +49,9 @@
                 </div>
             </div>
             <div class="card" style="border:2px solid var(--red);box-shadow:var(--sh-md)">
-                <h3 style="color:var(--navy);font-size:1.2rem">{{ $site['agent'] }}, Your Local Agent</h3>
+                <h3 style="color:var(--navy);font-size:1.2rem">{{ $site['brand'] }}, Your Local Team</h3>
                 <div style="display:grid;gap:.8rem;margin-top:1rem;color:var(--slate-700)">
-                    <div style="display:flex;gap:.6rem"><x-icon name="check-circle" class="text-blue" /> One dedicated agent who knows you</div>
+                    <div style="display:flex;gap:.6rem"><x-icon name="check-circle" class="text-blue" /> One dedicated team who knows you</div>
                     <div style="display:flex;gap:.6rem"><x-icon name="check-circle" class="text-blue" /> Honest, personalized recommendations</div>
                     <div style="display:flex;gap:.6rem"><x-icon name="check-circle" class="text-blue" /> Local expertise in Michigan coverage</div>
                     <div style="display:flex;gap:.6rem"><x-icon name="check-circle" class="text-blue" /> A real advocate when you file a claim</div>
@@ -65,7 +65,7 @@
     <div class="container">
         <div class="section-head center reveal">
             <span class="eyebrow"><x-icon name="quote" /> Client Reviews</span>
-            <h2>Don't just take my word for it</h2>
+            <h2>Don't just take our word for it</h2>
         </div>
         @include('partials.sections.testimonials', ['limit' => 3])
     </div>

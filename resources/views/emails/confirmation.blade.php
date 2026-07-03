@@ -21,9 +21,11 @@
                     <p style="font-size:15px;line-height:1.7;margin:0 0 20px">Proudly sponsored by Farmers Insurance and serving families &amp; businesses across all of Michigan.</p>
                 </td></tr>
 
-                {{-- Quote Shark Michigan logo --}}
-                <tr><td align="center" style="padding:6px 28px 12px">
-                    <img src="{{ url('/images/personallogo.png') }}" alt="{{ $site['brand'] }}" style="width:100%;max-width:300px;height:auto">
+                {{-- Patrick Yasso — Farmers Insurance business card --}}
+                <tr><td align="center" style="padding:6px 20px 14px">
+                    <img src="{{ url('/images/business-card.png') }}"
+                         alt="{{ $site['agent'] }} — {{ $site['company'] }} Agent · {{ $site['phone'] }} · {{ $site['email'] }} · {{ $site['address'] }}, {{ $site['city'] }}, {{ $site['state'] }} {{ $site['zip'] }}"
+                         style="width:100%;max-width:520px;height:auto;border-radius:10px;border:1px solid #e6ebf5;display:block">
                 </td></tr>
 
                 {{-- Action buttons --}}

@@ -2,7 +2,7 @@
 deployment:
   tasks:
     # Live Laravel app root (where vendor/ and .env already live).
-    - export DEPLOYPATH=/home/patricky/public_html
+    - export DEPLOYPATH=/home/quotesha/public_html
     # Copy code from the repo into the live site. vendor/, .env and storage/
     # are NOT in the repo, so they are left untouched.
     - /bin/cp -R app $DEPLOYPATH

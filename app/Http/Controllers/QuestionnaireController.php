@@ -72,6 +72,7 @@ class QuestionnaireController extends Controller
         // Store any uploaded declaration pages and collect their paths for the
         // admin notification email.
         $attachments = [];
+        $storedFiles = [];
         if ($request->hasFile('declarations')) {
             foreach ($request->file('declarations') as $file) {
                 if ($file && $file->isValid()) {
@@ -80,11 +81,18 @@ class QuestionnaireController extends Controller
                         'path' => storage_path('app/' . $stored),
                         'name' => $file->getClientOriginalName(),
                     ];
+                    // Persist the stored (relative) path so the admin dashboard
+                    // can view/download the exact file later.
+                    $storedFiles[] = [
+                        'path' => $stored,
+                        'name' => $file->getClientOriginalName(),
+                    ];
                 }
             }
         }
         if ($attachments) {
             $payload['Attached Files'] = implode(', ', array_column($attachments, 'name'));
+            $payload['_files'] = $storedFiles; // structured refs for the dashboard (hidden from text output)
         }
 
         $lead = $this->leads->store([

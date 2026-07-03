@@ -20,6 +20,7 @@ DETAILS
 -------
 @if (is_array($lead->data) && count(array_filter($lead->data)))
 @foreach (array_filter($lead->data) as $k => $v)
+@continue(\Illuminate\Support\Str::startsWith($k, '_'))
 {{ $k }}: {{ is_array($v) ? implode(', ', $v) : $v }}
 @endforeach
 @else

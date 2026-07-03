@@ -57,6 +57,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware('admin')->group(function () {
         Route::get('/', [AdminLeadController::class, 'index'])->name('leads');
         Route::get('leads/{lead}', [AdminLeadController::class, 'show'])->name('leads.show');
+        Route::get('leads/{lead}/file/{index}', [AdminLeadController::class, 'downloadFile'])->name('leads.file');
         Route::patch('leads/{lead}', [AdminLeadController::class, 'update'])->name('leads.update');
         Route::delete('leads/{lead}', [AdminLeadController::class, 'destroy'])->name('leads.destroy');
         Route::get('export/leads.csv', [AdminLeadController::class, 'export'])->name('leads.export');

@@ -33,10 +33,25 @@
                     @endforeach
                     @if (is_array($lead->data))
                         @foreach (array_filter($lead->data) as $k => $v)
+                            @continue(\Illuminate\Support\Str::startsWith($k, '_'))
                             <tr><td style="padding:.6rem 0;color:var(--slate-500);vertical-align:top">{{ $k }}</td><td style="padding:.6rem 0;font-weight:600;color:var(--navy)">{{ is_array($v) ? implode(', ', $v) : $v }}</td></tr>
                         @endforeach
                     @endif
                 </table>
+
+                @php $leadFiles = is_array($lead->data) ? ($lead->data['_files'] ?? []) : []; @endphp
+                @if (!empty($leadFiles))
+                    <div style="margin-top:1.3rem">
+                        <div style="color:var(--slate-500);font-size:.82rem;margin-bottom:.5rem">Uploaded Declaration Files</div>
+                        <div style="display:grid;gap:.5rem">
+                            @foreach ($leadFiles as $i => $f)
+                                <a href="{{ route('admin.leads.file', [$lead, $i]) }}" target="_blank" rel="noopener" class="btn btn--ghost btn--sm" style="justify-content:flex-start">
+                                    📎&nbsp; {{ $f['name'] ?? 'Attachment ' . ($i + 1) }}
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
 
                 @if ($lead->message)
                     <div style="margin-top:1.2rem;background:var(--slate-50);border-radius:10px;padding:1rem">

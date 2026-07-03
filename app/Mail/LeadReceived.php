@@ -11,7 +11,7 @@ class LeadReceived extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public function __construct(public Lead $lead, public array $attachments = [])
+    public function __construct(public Lead $lead, public array $files = [])
     {
     }
 
@@ -28,7 +28,7 @@ class LeadReceived extends Mailable
         }
 
         // Attach any uploaded declaration pages.
-        foreach ($this->attachments as $file) {
+        foreach ($this->files as $file) {
             if (!empty($file['path']) && is_file($file['path'])) {
                 $mail->attach($file['path'], ['as' => $file['name'] ?? null]);
             }

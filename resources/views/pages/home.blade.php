@@ -17,7 +17,7 @@
         <div class="hero__grid">
             <div class="hero__copy">
                 <div class="hero__badges">
-                    <span class="chip"><x-icon name="pin" /> Insuring Now of Michigan</span>
+                    <span class="chip"><x-icon name="pin" /> Insuring All of Michigan</span>
                     <span class="chip"><x-icon name="shield" /> Farmers Insurance</span>
                 </div>
                 <h1>Protecting Michigan <span class="accent">Families &amp; Businesses</span></h1>

@@ -61,5 +61,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::patch('leads/{lead}', [AdminLeadController::class, 'update'])->name('leads.update');
         Route::delete('leads/{lead}', [AdminLeadController::class, 'destroy'])->name('leads.destroy');
         Route::get('export/leads.csv', [AdminLeadController::class, 'export'])->name('leads.export');
+
+        // Mail diagnostics
+        Route::get('mail-test', [AdminLeadController::class, 'mailTest'])->name('mail.test');
+        Route::get('mail-log', [AdminLeadController::class, 'mailLog'])->name('mail.log');
     });
 });

@@ -3,7 +3,7 @@
 -- ---------------------------------------------------------------------
 --  HOW TO RUN:
 --   1. cPanel -> phpMyAdmin
---   2. Select the database  quotesha_patrick  (left sidebar)
+--   2. Select the database  quotesh1_paty  (left sidebar)
 --   3. Open the "SQL" tab
 --   4. Paste EVERYTHING below and click "Go"
 --
